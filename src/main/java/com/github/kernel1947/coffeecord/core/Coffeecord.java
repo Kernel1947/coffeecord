@@ -9,7 +9,7 @@ import javax.security.auth.login.LoginException;
 public class Coffeecord {
 
 	public static void run(String token) throws LoginException {
-		JDABuilder.createLight(token, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_MESSAGES)
+		JDABuilder.createLight(token, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_MESSAGES, GatewayIntent.MESSAGE_CONTENT)
 				.setActivity(Activity.listening("Coffee..."))
 				.addEventListeners(new Listener())
 				.build();
