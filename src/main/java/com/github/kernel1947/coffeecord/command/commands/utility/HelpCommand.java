@@ -1,8 +1,6 @@
 package com.github.kernel1947.coffeecord.command.commands.utility;
 
-import com.github.kernel1947.coffeecord.command.CommandContext;
-import com.github.kernel1947.coffeecord.command.CommandManager;
-import com.github.kernel1947.coffeecord.command.ICommand;
+import com.github.kernel1947.coffeecord.command.*;
 import com.github.kernel1947.coffeecord.core.Config;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
@@ -11,6 +9,7 @@ import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import java.awt.*;
 import java.util.List;
 
+@Command(type = CommandType.UTILITY)
 public class HelpCommand implements ICommand {
 	private String botInviteUrl;
 

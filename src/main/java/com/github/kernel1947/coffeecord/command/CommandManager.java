@@ -1,24 +1,26 @@
 package com.github.kernel1947.coffeecord.command;
 
-import com.github.kernel1947.coffeecord.command.commands.utility.HelpCommand;
-import com.github.kernel1947.coffeecord.command.commands.utility.InviteCommand;
-import com.github.kernel1947.coffeecord.command.commands.utility.PingCommand;
 import com.github.kernel1947.coffeecord.core.Config;
+import com.github.kernel1947.coffeecord.core.Logger;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import org.reflections.Reflections;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class CommandManager {
 	private static List<ICommand> commands = new ArrayList<>();
 
 	public CommandManager() {
-		// Utility Commands
-		addCommand(new HelpCommand());
-		addCommand(new PingCommand());
-		addCommand(new InviteCommand());
+		try {
+			var classes = new Reflections("com.github.kernel1947.coffeecord").getTypesAnnotatedWith(Command.class);
+			for (var Class : classes) {
+				ICommand instance = (ICommand) Class.getDeclaredConstructor().newInstance();
+				addCommand(instance);
+			}
+		} catch (Exception e) {
+			Logger.critical(e.getMessage());
+		}
 	}
 
 	public CommandManager(List<ICommand> commands) {
@@ -44,6 +46,10 @@ public class CommandManager {
 			if(cmd.getCommand().equals(command))
 				return cmd;
 		return null;
+	}
+
+	public static List<ICommand> getCommands() {
+		return commands;
 	}
 
 	public void handle(MessageReceivedEvent event) {

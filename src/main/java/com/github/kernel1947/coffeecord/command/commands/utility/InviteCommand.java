@@ -1,6 +1,8 @@
 package com.github.kernel1947.coffeecord.command.commands.utility;
 
+import com.github.kernel1947.coffeecord.command.Command;
 import com.github.kernel1947.coffeecord.command.CommandContext;
+import com.github.kernel1947.coffeecord.command.CommandType;
 import com.github.kernel1947.coffeecord.command.ICommand;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.Permission;
@@ -8,6 +10,7 @@ import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 
 import java.util.List;
 
+@Command(type = CommandType.UTILITY)
 public class InviteCommand implements ICommand {
 	@Override
 	public void execute(CommandContext ctx) {
