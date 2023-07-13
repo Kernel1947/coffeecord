@@ -23,7 +23,7 @@ Commands:
         help, help [COMMAND]
         ping
 		invite [server/bot]
-		info [general/bot]
+		info [author/bot]
 
 	Text:
 		haste [text]

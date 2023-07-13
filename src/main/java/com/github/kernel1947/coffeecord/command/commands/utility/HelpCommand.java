@@ -51,8 +51,7 @@ public class HelpCommand implements ICommand {
 
 		embed.addField("\u276F Home Server", "[Coffeecord](#link)", true);
 		embed.addField("\u276F Invite Bot", "[Coffeecord](" + botInviteUrl + ")", true);
-		embed.addField("\u276F Author", "[Kernel1947](https://github.com/Kernel1947)", true);
-		embed.addField("\u276F Source Code", "[Github](https://github.com/Kernel1947/coffeecord)", false);
+		embed.addField("\u276F Author", "[Kernel](https://github.com/Kernel1947)", true);
 		embed.getFields().addAll(getCommandsEmbed().getFields());
 
 		embed.setFooter("\u276F \u00A9 2023 Kernel1947");
