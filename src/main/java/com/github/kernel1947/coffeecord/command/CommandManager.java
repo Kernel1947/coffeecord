@@ -1,5 +1,7 @@
 package com.github.kernel1947.coffeecord.command;
 
+import com.github.kernel1947.coffeecord.command.commands.utility.HelpCommand;
+import com.github.kernel1947.coffeecord.command.commands.utility.InviteCommand;
 import com.github.kernel1947.coffeecord.command.commands.utility.PingCommand;
 import com.github.kernel1947.coffeecord.core.Config;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -14,7 +16,9 @@ public class CommandManager {
 
 	public CommandManager() {
 		// Utility Commands
+		addCommand(new HelpCommand());
 		addCommand(new PingCommand());
+		addCommand(new InviteCommand());
 	}
 
 	public CommandManager(List<ICommand> commands) {
@@ -35,7 +39,7 @@ public class CommandManager {
 		return getCommand(command.getCommand()) != null;
 	}
 
-	private ICommand getCommand(String command) {
+	public static ICommand getCommand(String command) {
 		for(ICommand cmd: commands)
 			if(cmd.getCommand().equals(command))
 				return cmd;
