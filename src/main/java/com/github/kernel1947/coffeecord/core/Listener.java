@@ -7,7 +7,11 @@ import net.dv8tion.jda.api.events.session.ReadyEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class Listener extends ListenerAdapter {
-	private static final CommandManager commandManager = new CommandManager();
+	private final CommandManager commandManager;
+
+	public Listener() {
+		this.commandManager = new CommandManager();
+	}
 
 	@Override
 	public void onReady(ReadyEvent event) {

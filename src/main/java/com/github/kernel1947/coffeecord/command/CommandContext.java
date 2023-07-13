@@ -9,12 +9,22 @@ import net.dv8tion.jda.api.sharding.ShardManager;
 import java.util.List;
 
 public class CommandContext {
-	private final MessageReceivedEvent event;
+	private final CommandRegistry registry;
 	private final List<String> args;
+	private final MessageReceivedEvent event;
 
-	public CommandContext(MessageReceivedEvent event, List<String> args) {
-		this.event = event;
+	public CommandContext(CommandRegistry registry, List<String> args, MessageReceivedEvent event) {
+		this.registry = registry;
 		this.args = args;
+		this.event = event;
+	}
+
+	public CommandRegistry getRegistry() {
+		return registry;
+	}
+
+	public List<String> getArgs() {
+		return this.args;
 	}
 
 	public JDA getJDA() {
@@ -55,9 +65,5 @@ public class CommandContext {
 
 	public Member getSelfMember() {
 		return this.getGuild().getSelfMember();
-	}
-
-	public List<String> getArgs() {
-		return this.args;
 	}
 }
